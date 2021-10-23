@@ -6,7 +6,7 @@ const container = document.querySelector('.container');
 
 const slidesArrayLength = mainSlide.querySelectorAll('div').length - 1; // считает длину массива картинок
 
-let activeSlideIndex = 0;
+let activeSlideIndex = 1;
 
 sidebar.style.top = `-${slidesArrayLength * 100}vh`; // выводим соответствующий по цвету сайдбар
 
@@ -20,22 +20,22 @@ downBtn.addEventListener('click', () => {
 
 function changeSlide(direction) {
   if (direction === 'up') {
-    activeSlideIndex++;
+    activeSlideIndex += 1;
     if (activeSlideIndex === slidesArrayLength + 1) {
       activeSlideIndex = 0;
     }
   } else if (direction === 'down') {
-    activeSlideIndex--;
+    activeSlideIndex -= 1;
     if (activeSlideIndex < 0) {
       activeSlideIndex = slidesArrayLength;
     }
   }
+
+  const height = container.clientHeight; // получаем высоту контейнера
+
+  mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
+  sidebar.style.transform = `translateY(${activeSlideIndex * height}px)`;
 }
 
-const height = container.clientHeight; // получаем высоту контейнера
-
-mainSlide.style.transform = `translateY(-${activeSlideIndex * height}px)`;
-sidebar.style.transform = `translatyY(${activeSlideIndex * height}px)`;
-
-console.log(height);
-console.log(changeSlide('up'));
+console.log(activeSlideIndex);
+console.log(changeSlide('down'));
