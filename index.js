@@ -18,6 +18,14 @@ downBtn.addEventListener('click', () => {
   changeSlide('down');
 });
 
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowUp') {
+    changeSlide('up');
+  } else if (e.key === 'ArrowDown') {
+    changeSlide('down');
+  }
+});
+
 function changeSlide(direction) {
   if (direction === 'up') {
     activeSlideIndex += 1;
@@ -37,5 +45,5 @@ function changeSlide(direction) {
   sidebar.style.transform = `translateY(${activeSlideIndex * height}px)`;
 }
 
-console.log(activeSlideIndex);
-console.log(changeSlide('down'));
+// console.log(activeSlideIndex);
+// console.log(changeSlide('down'));
